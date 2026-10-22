@@ -79,23 +79,46 @@ test.describe("mobile", () => {
   });
 });
 
-test("gallery filters filter and the lightbox works by keyboard", async ({ page }) => {
-  await page.goto("/gallery");
+test("house gallery filters filter and the lightbox works by keyboard", async ({ page }) => {
+  await page.goto("/the-house");
   const items = page.locator(".gallery-item");
   const all = await items.count();
-  await page.getByRole("button", { name: /^Kalk Bay/ }).click();
-  await expect(page.getByRole("button", { name: /^Kalk Bay/ })).toHaveAttribute("aria-pressed", "true");
-  const kb = await items.count();
-  expect(kb).toBeGreaterThan(0);
-  expect(kb).toBeLessThan(all);
+  await page.getByRole("button", { name: /^Inside/ }).click();
+  await expect(page.getByRole("button", { name: /^Inside/ })).toHaveAttribute("aria-pressed", "true");
+  const n = await items.count();
+  expect(n).toBeGreaterThan(0);
+  expect(n).toBeLessThan(all);
   await items.first().getByRole("button").click();
   const box = page.locator("dialog.lightbox");
   await expect(box).toBeVisible();
-  await expect(box).toContainText(`1 of ${kb}`);
+  await expect(box).toContainText(`1 of ${n}`);
   await page.keyboard.press("ArrowRight");
-  await expect(box).toContainText(`2 of ${kb}`);
+  await expect(box).toContainText(`2 of ${n}`);
   await page.keyboard.press("Escape");
   await expect(box).toBeHidden();
+});
+
+test("circular gallery turns with buttons and keys, and switches sets", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/gallery");
+  const region = page.getByRole("region", { name: "Circular 3D gallery" });
+  await expect(region).toBeVisible();
+  const now = page.locator(".circle-now");
+  await expect(now).toContainText(/^1 of \d+/);
+  await page.getByRole("button", { name: "Next photograph" }).click();
+  await expect(now).toContainText(/^2 of \d+/);
+  await page.getByRole("button", { name: "Previous photograph" }).click();
+  await expect(now).toContainText(/^1 of \d+/);
+  await page.locator(".circle-canvas").focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(now).toContainText(/^2 of \d+/);
+  await page.getByRole("button", { name: "Kalk Bay" }).click();
+  await expect(page.getByRole("button", { name: "Kalk Bay" })).toHaveAttribute("aria-pressed", "true");
+  await expect(now).toContainText(/^1 of \d+/);
+  await expect(region.locator("img").first()).toHaveAttribute("src", /kalk-bay/);
+  // Temporary images keep their visible label inside the circle.
+  await page.getByRole("button", { name: "The house" }).click();
+  await expect(region.getByText("Illustrative image").first()).toBeAttached();
 });
 
 test("FAQ items expand and collapse", async ({ page }) => {

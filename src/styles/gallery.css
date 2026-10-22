@@ -1,0 +1,137 @@
+/* The circular gallery: a tall scroll track with a pinned stage, so scrolling turns the circle. */
+.circle-scroll {
+  position: relative;
+  height: 320svh;
+}
+.circle-stage {
+  position: sticky;
+  top: var(--header-h);
+  height: calc(100svh - var(--header-h));
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  overflow: hidden;
+  background: var(--green-deep);
+  color: var(--paper);
+}
+.circle-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px 24px;
+  padding-top: 14px;
+  position: relative;
+  z-index: 2;
+}
+.circle-sets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+}
+.circle-sets button {
+  position: relative;
+  min-height: 44px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--on-dark-soft);
+  font: 400 1.0625rem var(--font-text);
+  cursor: pointer;
+  transition: color var(--t-hover) ease;
+}
+.circle-sets button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  height: 2px;
+  background: var(--apricot);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-hover) var(--ease-out);
+}
+.circle-sets button:hover,
+.circle-sets button[aria-pressed="true"] {
+  color: var(--paper);
+}
+.circle-sets button[aria-pressed="true"]::after {
+  transform: scaleX(1);
+}
+.circle-sets button:focus-visible,
+.circle-nav .btn:focus-visible,
+.circle-canvas:focus-visible {
+  outline-color: var(--paper);
+}
+.circle-hint {
+  color: var(--on-dark-soft);
+}
+.circle-canvas {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+}
+.circle-canvas:focus-visible {
+  outline-offset: -4px;
+}
+.circle-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px 24px;
+  padding-bottom: 16px;
+  position: relative;
+  z-index: 2;
+}
+.circle-now {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  line-height: 1.2;
+  min-height: 1.2em;
+}
+.circle-now .t-muted {
+  color: var(--on-dark-soft);
+}
+.circle-count {
+  font-family: var(--font-text);
+  font-size: var(--step-small);
+  font-variant-numeric: tabular-nums;
+  color: var(--apricot);
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.circle-nav {
+  display: flex;
+  gap: 8px;
+}
+@media (max-width: 600px) {
+  .circle-scroll {
+    height: 240svh;
+  }
+  .circle-hint {
+    display: none;
+  }
+  .circle-sets {
+    gap: 0 18px;
+  }
+  .circle-sets button {
+    font-size: 1rem;
+  }
+  .circle-nav {
+    width: 100%;
+  }
+  .circle-nav .btn {
+    flex: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .circle-scroll {
+    height: auto;
+  }
+  .circle-stage {
+    position: relative;
+    top: 0;
+    height: min(100svh, 820px);
+  }
+}

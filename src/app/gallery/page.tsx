@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Gallery } from "@/components/Gallery";
-import { galleryItems } from "@/content/gallery";
+import { GalleryCarousel } from "@/components/GalleryCarousel";
 import { pendingPhotos } from "@/content/images";
+import "@/styles/gallery.css";
 
 export const metadata: Metadata = {
   title: "Gallery",
@@ -22,8 +22,8 @@ export default function GalleryPage() {
           the house&apos;s own album is on its way.
         </p>
       </header>
-      <section className="wrap section-tight" style={{ paddingTop: 0 }} aria-label="Photographs">
-        <Gallery items={galleryItems} label="photographs" />
+      <section aria-label="Photographs" className="circle-section">
+        <GalleryCarousel />
       </section>
       <section className="section field-sand" aria-labelledby="coming-title">
         <div className="wrap coming">

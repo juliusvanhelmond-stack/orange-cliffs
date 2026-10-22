@@ -32,7 +32,7 @@ Playwright uses the Chromium at `/opt/pw-browsers/...` by default; set `CHROME=/
 | `/` | Home: view, house teaser, favourite spots, Scarborough, Kalk Bay, "Your day, your pace" planner, rating, booking |
 | `/the-house` | Spaces, rooms, amenities, filterable gallery with lightbox, practical info and FAQ |
 | `/explore` | Scarborough, food guide, Kalk Bay, the peninsula, interactive map |
-| `/gallery` | All photographs with category filters and an accessible lightbox |
+| `/gallery` | Circular 3D gallery (`src/components/ui/circular-gallery.tsx`), turned by scrolling, arrow keys or previous/next buttons, with photo sets |
 | `/reviews` | Verified rating and category scores, linking to the real reviews on Airbnb |
 | `/book` | How booking works, FAQ, Airbnb CTAs |
 | `/credits` | Photo, video and map credits |
@@ -43,6 +43,7 @@ Playwright uses the Chromium at `/opt/pw-browsers/...` by default; set `CHROME=/
 - `src/content/images.ts`: **every photograph** (src, alt, credit, licence, `isTemporary`, `replacementKey`)
 - `src/content/places.ts`: venues and OSM coordinates for the map
 - `src/content/faq.ts`: practical answers, all from the listing
+- `src/components/ui/`: shadcn-style UI primitives (currently `circular-gallery.tsx`)
 - `src/components/`: header/menu, footer, `Photo` (auto-labels temporary images), `Gallery`, `LocalMap`, `DayPlanner`, `FaqList`
 - `CONTENT_VERIFICATION.md`: what is verified, where from, and what is not shown
 - `CONTENT_AND_ASSETS_NEEDED.md`: photo replacement checklist and owner to-dos
