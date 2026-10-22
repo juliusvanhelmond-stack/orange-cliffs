@@ -1,0 +1,198 @@
+.house-head {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: end;
+}
+.house-head h1 {
+  max-width: 11ch;
+}
+.ratio-3-2 {
+  aspect-ratio: 3 / 2;
+}
+
+.chapter-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+}
+.chapter-text {
+  display: grid;
+  gap: 20px;
+  max-width: 30rem;
+}
+.chapter-text h2 {
+  color: var(--green);
+}
+
+.outside-grid {
+  margin-top: clamp(40px, 5vw, 72px);
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  grid-template-rows: auto auto;
+  gap: 16px clamp(24px, 4vw, 64px);
+}
+.outside-big {
+  grid-row: 1 / span 2;
+  aspect-ratio: 4 / 3;
+}
+.outside-text {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+  max-width: 28rem;
+}
+.outside-small {
+  aspect-ratio: 3 / 2;
+  align-self: end;
+}
+
+.dinner-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 16px var(--gutter);
+  align-items: start;
+}
+.dinner-title {
+  grid-column: 1 / span 5;
+  color: var(--burgundy);
+}
+.dinner-text {
+  grid-column: 7 / span 6;
+  max-width: 34rem;
+}
+.dinner-a {
+  grid-column: 1 / span 5;
+  margin-top: clamp(32px, 4vw, 64px);
+}
+.dinner-b {
+  grid-column: 6 / span 3;
+  margin-top: clamp(120px, 14vw, 220px);
+}
+.dinner-c {
+  grid-column: 9 / span 4;
+  margin-top: clamp(32px, 4vw, 64px);
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(32px, 6vw, 96px);
+}
+.rooms-intro {
+  display: grid;
+  gap: 22px;
+  align-content: start;
+}
+.rooms-cottage {
+  margin-top: 16px;
+  max-width: 340px;
+}
+.room-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 4vw, 56px) clamp(24px, 3vw, 48px);
+  align-content: start;
+}
+.room-list li {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+}
+.room-floor {
+  color: var(--muted);
+}
+.room-list h3 {
+  color: var(--green);
+}
+.room-beds {
+  font-weight: 500;
+}
+
+.amen-intro {
+  margin-top: 18px;
+  margin-bottom: clamp(36px, 5vw, 64px);
+  max-width: 40rem;
+  color: var(--muted);
+}
+.amen-cols {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 32px clamp(20px, 2.5vw, 40px);
+}
+.amen-cols h3 {
+  color: var(--green);
+  margin-bottom: 12px;
+}
+.amen-cols ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+  font-size: 1rem;
+}
+
+.practical-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: clamp(32px, 6vw, 96px);
+}
+.practical-list {
+  margin: 32px 0 0;
+  display: grid;
+  gap: 14px;
+}
+.practical-list div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+.practical-list dt {
+  color: var(--muted);
+}
+.practical-list dd {
+  margin: 0;
+  font-weight: 500;
+  text-align: right;
+}
+
+@media (max-width: 1000px) {
+  .amen-cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 900px) {
+  .house-head,
+  .chapter-grid,
+  .outside-grid,
+  .rooms-grid,
+  .practical-grid {
+    grid-template-columns: 1fr;
+  }
+  .outside-big {
+    grid-row: auto;
+  }
+  .dinner-title,
+  .dinner-text,
+  .dinner-a,
+  .dinner-b,
+  .dinner-c {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+  .dinner-b {
+    width: 60%;
+    margin-left: auto;
+  }
+}
+@media (max-width: 560px) {
+  .room-list,
+  .amen-cols {
+    grid-template-columns: 1fr;
+  }
+}

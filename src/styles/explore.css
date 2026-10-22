@@ -1,0 +1,480 @@
+.ratio-4-3 {
+  aspect-ratio: 4 / 3;
+}
+.ratio-3-2 {
+  aspect-ratio: 3 / 2;
+}
+
+/* Hero */
+.ex-hero {
+  position: relative;
+  height: 92svh;
+  min-height: 560px;
+  margin-top: calc(-1 * var(--header-h));
+  color: var(--paper);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--green-deep);
+}
+.ex-hero-photo {
+  position: absolute;
+  inset: 0;
+}
+.ex-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(20 22 20 / 0.66), rgb(20 22 20 / 0.2) 45%, rgb(20 22 20 / 0) 65%); /* taste-skill-ignore: neutral scrim behind text on a photograph */
+  pointer-events: none;
+}
+.ex-hero-copy {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding-bottom: clamp(24px, 5vh, 56px);
+  display: grid;
+  gap: 24px;
+}
+.ex-hero h1 [data-line] {
+  white-space: nowrap;
+}
+.ex-chapters {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 28px;
+}
+.ex-chapters a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 1.0625rem;
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+  text-decoration-color: rgb(250 247 241 / 0.45);
+  transition: text-decoration-color var(--t-hover) ease;
+}
+.ex-chapters a:hover {
+  text-decoration-color: var(--paper);
+}
+.ex-hero-credit {
+  font-size: 0.8125rem;
+  color: var(--on-dark-soft);
+}
+.ex-hero-credit a {
+  color: inherit;
+}
+@media (max-width: 600px) {
+  .ex-hero .t-hero {
+    font-size: clamp(1.9rem, 8.8vw, 2.6rem);
+  }
+}
+
+/* Scarborough */
+.sc-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: start;
+}
+.sc-title {
+  color: var(--green);
+  max-width: 12ch;
+}
+.sc-text {
+  display: grid;
+  gap: 22px;
+  max-width: 38rem;
+}
+.sc-pano {
+  margin: clamp(56px, 7vw, 104px) 0 0;
+}
+.sc-pano-photo {
+  aspect-ratio: 2400 / 522;
+  width: 100%;
+}
+.sc-ideas {
+  margin-top: clamp(64px, 8vw, 120px);
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: start;
+}
+.sc-ideas-photo {
+  margin: 0;
+}
+.sc-ideas-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 32px;
+}
+.sc-ideas-list h3 {
+  color: var(--green);
+  margin-bottom: 6px;
+}
+
+/* Food */
+.food-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: clamp(32px, 6vw, 112px);
+  align-items: start;
+}
+.food-head {
+  display: grid;
+  gap: 22px;
+}
+.food-head h2 {
+  color: var(--burgundy);
+}
+.food-photo {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+  max-width: 420px;
+}
+.food-grid .venues {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+.food-head {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
+}
+.venues {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: clamp(44px, 5vw, 72px);
+}
+.venue {
+  display: grid;
+  gap: 12px;
+}
+.venue:nth-child(even) {
+  padding-left: clamp(0px, 8vw, 120px);
+}
+.venue-name {
+  font-size: clamp(2rem, 3.6vw, 3.2rem);
+  line-height: 1;
+}
+.venue-body {
+  display: grid;
+  gap: 8px;
+  max-width: 34rem;
+}
+.venue-kind {
+  font-weight: 500;
+}
+.venue-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 24px;
+}
+
+/* Kalk Bay */
+.kb-top {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: end;
+}
+.kb-title {
+  max-width: 22ch;
+}
+.kb-photos {
+  margin-top: clamp(56px, 7vw, 104px);
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  gap: var(--gutter);
+  padding-right: var(--m);
+  align-items: end;
+}
+.kb-photos figure {
+  margin: 0;
+}
+.kb-photos .caption {
+  padding-left: var(--m);
+}
+.kb-b .caption {
+  padding-left: 0;
+}
+.kb-day {
+  margin-top: clamp(64px, 8vw, 120px);
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: clamp(32px, 6vw, 112px);
+  align-items: start;
+}
+.kb-day-text {
+  display: grid;
+  gap: 16px;
+  max-width: 30rem;
+  position: sticky;
+  top: calc(var(--header-h) + 24px);
+}
+.kb-day-text h3 {
+  color: var(--accent);
+}
+.kb-wide {
+  margin: clamp(72px, 9vw, 140px) 0 0;
+}
+.kb-wide-photo {
+  aspect-ratio: 21 / 8;
+  width: 100%;
+}
+
+/* Peninsula: three frames, each sliding over the last */
+.pen-head {
+  display: grid;
+  gap: 24px;
+  padding-top: clamp(80px, 9vw, 140px);
+  padding-bottom: clamp(56px, 7vw, 96px);
+}
+.pen-head h2 {
+  max-width: 24ch;
+}
+.pen-lead {
+  max-width: 40rem;
+}
+.curtain-frame {
+  position: relative;
+  height: 92svh;
+  min-height: 520px;
+  overflow: hidden;
+}
+.curtain-frame + .curtain-frame {
+  margin-top: 6px;
+}
+.curtain-photo {
+  position: absolute;
+  inset: 0;
+}
+.curtain-frame::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 55%;
+  background: linear-gradient(to top, rgb(20 22 20 / 0.72), rgb(20 22 20 / 0)); /* taste-skill-ignore: neutral scrim behind text on a photograph */
+  pointer-events: none;
+}
+.curtain-caption {
+  position: absolute;
+  z-index: 2;
+  left: var(--m);
+  right: var(--m);
+  bottom: clamp(24px, 6vh, 64px);
+  display: grid;
+  gap: 10px;
+  max-width: 36rem;
+  color: var(--paper);
+}
+.curtain-caption h3 {
+  font-size: var(--step-1);
+}
+.curtain-credit {
+  font-size: 0.8125rem;
+  color: var(--on-dark-soft);
+}
+.curtain-credit a {
+  color: inherit;
+}
+
+/* Map */
+.map-intro {
+  margin: 18px 0 32px;
+  max-width: 38rem;
+}
+.localmap-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.localmap-filters button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 16px;
+  background: var(--sand);
+  color: var(--ink);
+  border: 0;
+  font: 400 1rem var(--font-text);
+  cursor: pointer;
+  transition:
+    background-color var(--t-hover) ease,
+    color var(--t-hover) ease;
+}
+.localmap-filters button[aria-pressed="false"] {
+  background: transparent;
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: rgb(94 87 79 / 0.5);
+}
+.localmap-filters button:hover {
+  background: var(--sand-deep);
+}
+.swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex: none;
+}
+.localmap-body {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  gap: var(--gutter);
+  height: min(78svh, 720px);
+}
+.localmap-canvas {
+  position: relative;
+  background: var(--sand);
+  min-height: 360px;
+  z-index: 0;
+}
+.localmap-status {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  text-align: center;
+  color: var(--muted);
+}
+.localmap-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 4px 0 0;
+  overflow-y: auto;
+  display: grid;
+  align-content: start;
+  gap: 2px;
+}
+.localmap-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  padding-right: 10px;
+  transition: background-color var(--t-hover) ease;
+}
+.localmap-list li[data-selected="true"],
+.localmap-list li:hover {
+  background: var(--sand);
+}
+.localmap-item {
+  display: grid;
+  grid-template-columns: 12px minmax(0, 1fr);
+  gap: 12px;
+  align-items: baseline;
+  padding: 10px;
+  background: none;
+  border: 0;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.localmap-item strong {
+  display: block;
+  font-weight: 500;
+  font-size: 1rem;
+}
+.localmap-item .t-small {
+  display: block;
+  color: var(--muted);
+}
+.localmap-dir {
+  font-size: 0.9375rem;
+  white-space: nowrap;
+}
+.localmap-note {
+  margin-top: 14px;
+}
+.map-cta {
+  margin-top: 40px;
+}
+.leaflet-container {
+  font-family: var(--font-text);
+}
+.leaflet-popup-content {
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+.leaflet-popup-content a {
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .sc-grid,
+  .sc-ideas,
+  .food-grid,
+  .kb-top,
+  .kb-day {
+    grid-template-columns: 1fr;
+  }
+  .food-head,
+  .kb-day-text {
+    position: static;
+  }
+  .food-head,
+  .food-grid .venues,
+  .food-photo {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .kb-photos {
+    grid-template-columns: 1fr;
+    padding-inline: 0;
+  }
+  .kb-b {
+    width: 70%;
+    margin-left: auto !important;
+    padding-right: var(--m);
+  }
+  .sc-pano-photo {
+    aspect-ratio: 2 / 1;
+  }
+  .kb-wide-photo {
+    aspect-ratio: 4 / 3;
+  }
+  .localmap-body {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .localmap-canvas {
+    height: 62svh;
+  }
+  .localmap-list {
+    max-height: none;
+    overflow: visible;
+  }
+  .venue:nth-child(even) {
+    padding-left: 0;
+  }
+}
+
+.kb-video {
+  margin: 12px 0 0;
+}
+.loop-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--sand);
+}
+@media (max-width: 600px) {
+  .ex-hero h1 [data-line] {
+    white-space: normal;
+  }
+}

@@ -1,0 +1,26 @@
+[
+ {
+  "file": "public/video/kalk-bay-harbour.webm",
+  "media": "video",
+  "poster": "public/video/kalk-bay-harbour-poster.jpg",
+  "ref": "commons:7374948",
+  "title": "Kalk Bay Harbour",
+  "creator": "Patrick Scales",
+  "creatorUrl": null,
+  "date": "2008-09-24",
+  "license": "public domain",
+  "licenseCode": "pd",
+  "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "creditRequired": false,
+  "page": "https://commons.wikimedia.org/wiki/File:Kalk_Bay_Harbour.ogv",
+  "via": "Wikimedia Commons",
+  "video": "https://upload.wikimedia.org/wikipedia/commons/transcoded/3/32/Kalk_Bay_Harbour.ogv/Kalk_Bay_Harbour.ogv.480p.vp9.webm",
+  "width": 640,
+  "height": 480,
+  "duration": 28.7,
+  "bytes": 4551397,
+  "credit": "\"Kalk Bay Harbour\" by Patrick Scales, public domain, via Wikimedia Commons",
+  "notes": [],
+  "saved": "2026-10-22T19:36:25.422Z"
+ }
+]

@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Orange Cliffs
 
-## Getting Started
+Website for Orange Cliffs, a family holiday home in Scarborough on the Cape Peninsula, South Africa. Bookings go through the official Airbnb listing.
 
-First, run the development server:
+**Stack:** Next.js 15 (App Router, statically rendered) · TypeScript · Tailwind CSS v4 + plain CSS tokens · Leaflet with OpenStreetMap tiles (loaded lazily, no API key) · Playwright.
+
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev            # http://localhost:3000
+npm run build && npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Checks:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run typecheck
+npm run lint
+npm run build
+npx next start -p 3100 &   # then, in another shell:
+npm run test:e2e           # Playwright, desktop 1440 + mobile 390
+npm run shots -- http://localhost:3100 .shots   # screenshots + overflow/console report
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Playwright uses the Chromium at `/opt/pw-browsers/...` by default; set `CHROME=/path/to/chrome` elsewhere.
 
-## Learn More
+## Routes
 
-To learn more about Next.js, take a look at the following resources:
+| Route | Page |
+| --- | --- |
+| `/` | Home: view, house teaser, favourite spots, Scarborough, Kalk Bay, "Your day, your pace" planner, rating, booking |
+| `/the-house` | Spaces, rooms, amenities, filterable gallery with lightbox, practical info and FAQ |
+| `/explore` | Scarborough, food guide, Kalk Bay, the peninsula, interactive map |
+| `/gallery` | All photographs with category filters and an accessible lightbox |
+| `/reviews` | Verified rating and category scores, linking to the real reviews on Airbnb |
+| `/book` | How booking works, FAQ, Airbnb CTAs |
+| `/credits` | Photo, video and map credits |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Where things live
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `src/content/site.ts`: booking URL, verified listing facts (with source and date), rooms, amenities, rules
+- `src/content/images.ts`: **every photograph** (src, alt, credit, licence, `isTemporary`, `replacementKey`)
+- `src/content/places.ts`: venues and OSM coordinates for the map
+- `src/content/faq.ts`: practical answers, all from the listing
+- `src/components/`: header/menu, footer, `Photo` (auto-labels temporary images), `Gallery`, `LocalMap`, `DayPlanner`, `FaqList`
+- `CONTENT_VERIFICATION.md`: what is verified, where from, and what is not shown
+- `CONTENT_AND_ASSETS_NEEDED.md`: photo replacement checklist and owner to-dos
 
-## Deploy on Vercel
+## Before launch
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Set `NEXT_PUBLIC_SITE_URL` to the production domain. Until it is set, the site sends `noindex` and `robots.txt` disallows crawling, so the preview stays out of search results.
